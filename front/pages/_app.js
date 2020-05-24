@@ -1,6 +1,7 @@
 import Head from "next/head";
+import PropTypes from "prop-types";
 
-const TestApp = ({ Component }) => {
+const BlackDesert = ({ Component }) => {
     return (
         <>
             <Head>
@@ -11,4 +12,8 @@ const TestApp = ({ Component }) => {
     );
 };
 
-export default TestApp;
+BlackDesert.propTypes = {
+    Component: PropTypes.elementType,
+};
+
+export default BlackDesert;
