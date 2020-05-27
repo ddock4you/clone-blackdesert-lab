@@ -5,8 +5,12 @@
     "main": "index.js",
     "dependencies": {
         "next": "^9.4.2",
+        "next-redux-wrapper": "^6.0.0",
         "react": "^16.13.1",
-        "react-dom": "^16.13.1"
+        "react-dom": "^16.13.1",
+        "react-redux": "^7.2.0",
+        "redux": "^4.0.5",
+        "redux-devtools-extension": "^2.13.8"
     },
     "devDependencies": {
         "eslint-plugin-import": "^2.20.2",
