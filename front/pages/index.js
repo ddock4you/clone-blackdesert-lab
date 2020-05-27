@@ -26,7 +26,6 @@ const Home = () => {
                     onChange={setTestValue}
                 />
             </div>
-            ;
         </>
     );
 };

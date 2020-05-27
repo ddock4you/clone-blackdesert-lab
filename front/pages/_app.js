@@ -36,3 +36,4 @@ export default withRedux((initialState, options) => {
     const store = createStore(reducer, initialState, enhancer);
     return store;
 })(TestApp);
+
