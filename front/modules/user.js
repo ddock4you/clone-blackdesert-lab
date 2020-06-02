@@ -5,17 +5,17 @@ const initialState = {
     },
 };
 
-const LOG_IN = "LOG_IN";
-const LOG_OUT = "LOG_OUT";
+export const LOG_IN = "LOG_IN";
+export const LOG_OUT = "LOG_OUT";
 
-const loginAction = {
-    type: LOG_IN,
-    data: {
-        user: {
-            id: "bbb",
-        },
-    },
-};
+// const loginAction = {
+//     type: LOG_IN,
+//     data: {
+//         user: {
+//             id: "bbb",
+//         },
+//     },
+// };
 
 export default (state = initialState, action) => {
     switch (action.type) {
@@ -24,7 +24,7 @@ export default (state = initialState, action) => {
                 ...state,
                 isLogin: true,
                 user: {
-                    id: data.user.id,
+                    id: action.data,
                 },
             };
         }

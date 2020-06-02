@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import { LOG_IN } from "../modules/user";
 
 const Home = () => {
     const commonValue = (inputValue = null) => {
@@ -12,7 +14,18 @@ const Home = () => {
 
     const [testValue, setTestValue] = commonValue("");
 
-    console.log(testValue);
+    const dispatch = useDispatch();
+    const { isLogin } = useSelector((state) => state.user);
+
+    useEffect(() => {
+        dispatch({
+            type: LOG_IN,
+            data: "하이염",
+        });
+
+        console.log(isLogin);
+    }, []);
+
     return (
         <>
             <Link href="/about/create">
