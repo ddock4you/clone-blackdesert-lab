@@ -1,20 +1,13 @@
 import Head from "next/head";
 import { useEffect } from "react";
-// import { useRouter } from "next/router";
-import { Provider } from "react-redux";
 import PropTypes from "prop-types";
-import { createStore, applyMiddleware } from "redux";
 import reducer from "../modules";
-import { composeWithDevTools } from "redux-devtools-extension";
 import withRedux from "next-redux-wrapper";
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
 
 const TestApp = ({ Component, store }) => {
-    // const store = createStore(reducer, composeWithDevTools());
-    // const router = useRouter();
-
-    useEffect(() => {
-        // console.dir(router);
-    });
     return (
         <Provider store={store}>
             <Head>
