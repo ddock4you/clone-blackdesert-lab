@@ -1,11 +1,13 @@
 import Head from "next/head";
-import { useEffect } from "react";
 import PropTypes from "prop-types";
 import reducer from "../modules";
 import withRedux from "next-redux-wrapper";
+import { Reset } from "styled-reset";
+
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
+import Header from "../components/Header";
 
 const TestApp = ({ Component, store }) => {
     return (
@@ -13,6 +15,8 @@ const TestApp = ({ Component, store }) => {
             <Head>
                 <title>bbaaaa</title>
             </Head>
+            <Reset />
+            <Header />
             <Component />
         </Provider>
     );
