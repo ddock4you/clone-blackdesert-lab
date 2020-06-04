@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { LOG_IN } from "../modules/user";
 import MainVisual from "../components/MainVisual";
 import MainSlide from "../components/MainSlide";
+import AdventureStart from "../components/AdventureStart";
 
 const Home = () => {
     const commonValue = (inputValue = null) => {
@@ -32,6 +32,7 @@ const Home = () => {
         <main>
             <MainVisual />
             <MainSlide />
+            <AdventureStart />
         </main>
     );
 };

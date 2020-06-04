@@ -1,5 +1,10 @@
 import { css } from "styled-components";
 
+export const inner = css`
+    width: 1400px;
+    margin: 0 auto;
+`;
+
 export const centerContent = css`
     position: absolute;
     top: 50%;
