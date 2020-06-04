@@ -1,23 +1,40 @@
 import Head from "next/head";
 import PropTypes from "prop-types";
-import reducer from "../modules";
 import withRedux from "next-redux-wrapper";
 import { Reset } from "styled-reset";
-
+import { createGlobalStyle } from "styled-components";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
-import Header from "../components/Header";
+
+import reducer from "../modules";
+import AppLayout from "../components/AppLayout";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+const GlobalStyle = createGlobalStyle`
+
+    body {
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+`;
 
 const TestApp = ({ Component, store }) => {
     return (
         <Provider store={store}>
             <Head>
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&amp;display=swap"
+                    rel="stylesheet"
+                />
                 <title>bbaaaa</title>
             </Head>
             <Reset />
-            <Header />
-            <Component />
+            <GlobalStyle />
+            <AppLayout>
+                <Component />
+            </AppLayout>
         </Provider>
     );
 };

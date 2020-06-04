@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { LOG_IN } from "../modules/user";
+import MainVisual from "../components/MainVisual";
+import MainSlide from "../components/MainSlide";
 
 const Home = () => {
     const commonValue = (inputValue = null) => {
@@ -12,7 +14,7 @@ const Home = () => {
         return [value, handle];
     };
 
-    const [testValue, setTestValue] = commonValue("");
+    // const [testValue, setTestValue] = commonValue("");
 
     const dispatch = useDispatch();
     const { isLogin } = useSelector((state) => state.user);
@@ -27,19 +29,10 @@ const Home = () => {
     }, []);
 
     return (
-        <>
-            <Link href="/about/create">
-                <a>about</a>
-            </Link>
-            <div>
-                <input
-                    type="text"
-                    value={testValue}
-                    placeholder="입력"
-                    onChange={setTestValue}
-                />
-            </div>
-        </>
+        <main>
+            <MainVisual />
+            <MainSlide />
+        </main>
     );
 };
 
