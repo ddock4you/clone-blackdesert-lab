@@ -24,10 +24,10 @@ const TestApp = ({ Component, store }) => {
     return (
         <Provider store={store}>
             <Head>
-                <link
+                {/* <link
                     href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&amp;display=swap"
                     rel="stylesheet"
-                />
+                /> */}
                 <title>bbaaaa</title>
             </Head>
             <Reset />
