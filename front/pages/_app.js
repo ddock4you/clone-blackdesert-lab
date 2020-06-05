@@ -8,7 +8,7 @@ import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import reducer from "../modules";
-import AppLayout from "../components/AppLayout";
+import AppLayout from "../layout/AppLayout";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

@@ -1,5 +1,11 @@
+const { default: AccountHead } = require("../../components/AccountHead");
+
 const Login = () => {
-    return <div>로그인 페이지</div>;
+    return (
+        <div>
+            <AccountHead>로그인</AccountHead>
+        </div>
+    );
 };
 
 export default Login;

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const SignHeadline = styled.h2`
+const AccountHeadline = styled.h2`
     padding: 65px 0 42px;
     margin-bottom: 34px;
     text-align: center;
@@ -10,8 +10,8 @@ const SignHeadline = styled.h2`
     border-bottom: 2px solid #555;
 `;
 
-const SignHead = ({ children }) => {
-    return <SignHeadline>{children}</SignHeadline>;
+const AccountHead = ({ children }) => {
+    return <AccountHeadline>{children}</AccountHeadline>;
 };
 
-export default SignHead;
+export default AccountHead;
