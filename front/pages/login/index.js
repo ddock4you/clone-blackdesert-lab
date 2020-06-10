@@ -1,10 +1,14 @@
+import AccountLayout from "../../layout/AccountLayout";
+import LoginForm from "../../components/LoginForm";
+
 const { default: AccountHead } = require("../../components/AccountHead");
 
 const Login = () => {
     return (
-        <div>
+        <AccountLayout>
             <AccountHead>로그인</AccountHead>
-        </div>
+            <LoginForm />
+        </AccountLayout>
     );
 };
 

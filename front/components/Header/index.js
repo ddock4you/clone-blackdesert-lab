@@ -84,7 +84,7 @@ const Header = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link href="/">
+                            <Link href="/login">
                                 <a>
                                     <FontAwesomeIcon icon={faUser} /> 로그인
                                 </a>

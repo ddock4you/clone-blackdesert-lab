@@ -18,11 +18,21 @@ const GlobalStyle = createGlobalStyle`
     body {
         font-family: 'Noto Sans KR', sans-serif;
     }
+
+    button {
+        border: none;
+        cursor: pointer;
+    }
+
+    a {
+        text-decoration: none;
+    }
 `;
 
 const TestApp = ({ Component, store }) => {
     return (
         <Provider store={store}>
+            <Reset />
             <Head>
                 {/* <link
                     href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&amp;display=swap"
@@ -30,7 +40,6 @@ const TestApp = ({ Component, store }) => {
                 /> */}
                 <title>bbaaaa</title>
             </Head>
-            <Reset />
             <GlobalStyle />
             <AppLayout>
                 <Component />
