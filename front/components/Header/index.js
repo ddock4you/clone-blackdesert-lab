@@ -76,7 +76,7 @@ const Header = () => {
                 <RightNav>
                     <ul>
                         <li>
-                            <Link href="/">
+                            <Link href="/join/step1">
                                 <a>
                                     <FontAwesomeIcon icon={faSignInAlt} />{" "}
                                     회원가입

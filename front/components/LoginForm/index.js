@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
 
-const Form = styled.form`
+export const Form = styled.form`
     width: 600px;
     margin: 0 auto;
     padding-bottom: 60px;
@@ -154,7 +154,7 @@ const LoginForm = () => {
             <SubmitButton type="submit">로그인</SubmitButton>
             <AgreeCheck>
                 <input type="checkbox" id="agree" />
-                <label for="agree">로그인 정보 기억하기</label>
+                <label htmlFor="agree">로그인 정보 기억하기</label>
             </AgreeCheck>
             <AccountNav>
                 <ul>
@@ -169,7 +169,7 @@ const LoginForm = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link href="/login">
+                        <Link href="/join/step1">
                             <a>회원가입</a>
                         </Link>
                     </li>

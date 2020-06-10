@@ -74,7 +74,7 @@ const AdventureStart = () => {
                     <h2>당신만의 모험을 시작하세요</h2>
                     <p>검은사막의 광활한 세계로 당신을 초대합니다</p>
                     <ButtonBox>
-                        <Link href="/">
+                        <Link href="/join/step1">
                             <a>회원가입</a>
                         </Link>
                         <Link href="/">

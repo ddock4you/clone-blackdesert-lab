@@ -1,7 +1,6 @@
 import AccountLayout from "../../layout/AccountLayout";
 import LoginForm from "../../components/LoginForm";
-
-const { default: AccountHead } = require("../../components/AccountHead");
+import AccountHead from "../../components/AccountHead";
 
 const Login = () => {
     return (
