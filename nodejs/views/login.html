@@ -1,5 +1,15 @@
 {% extends "./components/layout.html" %}
 
 {% block login %}
-<div>로그인</div>
+<div>
+    <form action="">
+        <div>
+            <input type="email" name="email" require>
+        </div>
+        <div>
+            <input type="password" name="password" require>
+        </div>
+        <button type="submit">로그인</button>
+    </form>
+</div>
 {% endblock %}

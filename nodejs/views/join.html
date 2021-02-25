@@ -1,5 +1,42 @@
 {% extends "./components/layout.html" %}
 
 {% block content %}
-<div>회원가입</div>
+<div>
+    <form method="post" action="/join">
+        <div>
+            <input type="email" name="email" placeholder="이메일">
+        </div>
+        <div>
+            <input type="password" name="password" placeholder="비밀번호">
+        </div>
+        <div>
+            <input type="password" name="password" placeholder="이메일">
+        </div>
+        <div>
+            <input type="text" name="name" placeholder="이름">
+        </div>
+        <div>
+            <input type="text" name="name" placeholder="이름">
+        </div>
+        <div>
+            <p class="">생년월일</p>
+            <select name="birth_year">
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+            </select>
+            <select name="birth_month">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+            <select name="birth_day">
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+            </select>
+        </div>
+        <button type="submit">가입하기</button>
+    </form>
+</div>
 {% endblock %}
