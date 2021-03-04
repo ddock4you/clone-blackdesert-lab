@@ -2,18 +2,12 @@
 
 {% block content %}
 <div>
-    <form method="post" action="/join">
+    <form method="post" action="/join" name="join_form">
         <div>
             <input type="email" name="email" placeholder="이메일">
         </div>
         <div>
             <input type="password" name="password" placeholder="비밀번호">
-        </div>
-        <div>
-            <input type="password" name="password" placeholder="이메일">
-        </div>
-        <div>
-            <input type="text" name="name" placeholder="이름">
         </div>
         <div>
             <input type="text" name="name" placeholder="이름">
@@ -40,3 +34,7 @@
     </form>
 </div>
 {% endblock %}
+
+{% block script %}
+<script src="/dist/js/join.js"></script>
+{% endblock%}
