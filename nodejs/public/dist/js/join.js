@@ -38,7 +38,8 @@ document.querySelector("[name=join_form]").addEventListener("submit", function (
   axios.post("/user/join", {
     email: e.target.email.value,
     password: e.target.password.value,
-    birth: "".concat(e.target.birth_year, "-").concat(e.target.birth_month, "-").concat(e.target.birth_day)
+    birth: "".concat(e.target.birth_year.value, "-").concat(e.target.birth_month.value, "-").concat(e.target.birth_day.value),
+    name: e.target.name.value
   }).then(function (response) {
     console.log(response);
   })["catch"](function (error) {

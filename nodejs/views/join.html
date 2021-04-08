@@ -1,16 +1,17 @@
-{% extends "./components/layout.html" %}
-
-{% block content %}
+{% extends "./components/layout.html" %} {% block content %}
 <div>
-    <form method="post" action="/join" name="join_form">
+    <form method="post" action="/user/join" name="join_form">
         <div>
-            <input type="email" name="email" placeholder="이메일">
+            <input type="email" name="email" placeholder="이메일" />
         </div>
         <div>
-            <input type="password" name="password" placeholder="비밀번호">
+            <input type="password" name="password" placeholder="비밀번호" />
         </div>
         <div>
-            <input type="text" name="name" placeholder="이름">
+            <input type="password" name="password2" placeholder="비밀번호" />
+        </div>
+        <div>
+            <input type="text" name="name" placeholder="이름" />
         </div>
         <div>
             <p class="">생년월일</p>
@@ -33,8 +34,6 @@
         <button type="submit">가입하기</button>
     </form>
 </div>
-{% endblock %}
-
-{% block script %}
+{% endblock %} {% block script %}
 <script src="/dist/js/join.js"></script>
 {% endblock%}

@@ -39,12 +39,13 @@ document.querySelector("[name=join_form]").addEventListener("submit", (e) => {
         .post("/user/join", {
             email: e.target.email.value,
             password: e.target.password.value,
-            birth: `${e.target.birth_year}-${e.target.birth_month}-${e.target.birth_day}`,
+            birth: `${e.target.birth_year.value}-${e.target.birth_month.value}-${e.target.birth_day.value}`,
+            name: e.target.name.value,
         })
-        .then(function (response) {
+        .then((response) => {
             console.log(response);
         })
-        .catch(function (error) {
+        .catch((error) => {
             console.log(error);
         });
 });
