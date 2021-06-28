@@ -2,7 +2,8 @@ console.log("join");
 
 document.querySelector("[name=join_form]").addEventListener("submit", (e) => {
     e.preventDefault();
-    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    const emailRegex =
+        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
     // 회원가입 유효성 검사
     if (!emailRegex.test(e.target.email.value)) {
