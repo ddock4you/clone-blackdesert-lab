@@ -9,8 +9,6 @@ const app = express();
 const page = require("./routes");
 const connection = mysql.createConnection(dbconfig);
 
-const PORT = 3001;
-
 connection.connect((err) => {
     if (err) {
         console.error("error connecting: " + err.stack);
@@ -19,11 +17,7 @@ connection.connect((err) => {
     console.log("DB connected");
 });
 
-// connection.query("SELECT * from users", (error, rows) => {
-//     if (error) throw error;
-//     console.log("User info is: ", rows);
-// });
-
+app.set("port", process.env.PORT || 3001);
 app.set("view engine", "html");
 nunjucks.configure("views", {
     express: app,
@@ -49,6 +43,6 @@ app.use("/", page);
 //     res.send('');
 // });
 
-app.listen(PORT, (req, res) => {
-    console.log(`Server connected`);
+app.listen(app.get("port"), (req, res) => {
+    console.log(`Server connected on port ${app.get("port")}`);
 });
