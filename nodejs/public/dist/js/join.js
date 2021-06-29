@@ -41,7 +41,7 @@ document.querySelector("[name=join_form]").addEventListener("submit", function (
     birth: "".concat(e.target.birth_year.value, "-").concat(e.target.birth_month.value, "-").concat(e.target.birth_day.value),
     name: e.target.name.value
   }).then(function (response) {
-    console.log(response);
+    console.log(response.data);
   })["catch"](function (error) {
     console.log(error);
   });

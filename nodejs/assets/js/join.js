@@ -44,7 +44,7 @@ document.querySelector("[name=join_form]").addEventListener("submit", (e) => {
             name: e.target.name.value,
         })
         .then((response) => {
-            console.log(response);
+            console.log(response.data);
         })
         .catch((error) => {
             console.log(error);
