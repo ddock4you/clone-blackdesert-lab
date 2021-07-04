@@ -1,36 +1,40 @@
-const express = require('express');
-const nunjucks = require('nunjucks');
-const morgan = require('morgan');
-const path = require('path');
-const {
-    sequelize
-} = require('./models');
+const express = require("express");
+const nunjucks = require("nunjucks");
+const morgan = require("morgan");
+const mysql = require("mysql");
 
+const dbconfig = require("./config/database");
+const dotenv = require("dotenv");
 const app = express();
-const page = require('./routes');
+const page = require("./routes");
+const connection = mysql.createConnection(dbconfig);
 
-const PORT = 3001;
+dotenv.config();
+connection.connect((err) => {
+    if (err) {
+        console.error("error connecting: " + err.stack);
+        return;
+    }
+    console.log("DB connected");
+});
 
-app.set('view engine', 'html');
-nunjucks.configure('views', {
+app.set("port", process.env.PORT || 3001);
+app.set("view engine", "html");
+nunjucks.configure("views", {
     express: app,
-    watch: true
+    watch: true,
 });
-sequelize.sync({
-    force: false
-}).then(() => {
-    console.log('database connected');
-}).catch((err) => {
-    console.error(err);
-});
-app.use(morgan('dev'));
-app.use(express.static(__dirname + '/public'));
-app.use(express.json());
-app.use(express.urlencoded({
-    extended: false
-}));
 
-app.use('/', page);
+app.use(morgan("dev"));
+app.use(express.static(__dirname + "/public"));
+app.use(express.json());
+app.use(
+    express.urlencoded({
+        extended: false,
+    })
+);
+
+app.use("/", page);
 
 // app.use((err, req, res, next) => {
 //     res.locals.message = err.message;
@@ -40,6 +44,6 @@ app.use('/', page);
 //     res.send('');
 // });
 
-app.listen(PORT, (req, res) => {
-    console.log(`connect`);
+app.listen(app.get("port"), (req, res) => {
+    console.log(`Server connected on port ${app.get("port")}`);
 });

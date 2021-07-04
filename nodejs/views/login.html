@@ -2,7 +2,7 @@
 
 {% block content %}
 <div>
-    <form action="">
+    <form method="POST" name="loginForm">
         <div>
             <input type="email" name="email" placeholder="email" require>
         </div>
@@ -12,4 +12,7 @@
         <button type="submit">로그인</button>
     </form>
 </div>
+{% endblock %}
+{% block script %}
+<script src="/dist/js/login.js"></script>
 {% endblock %}

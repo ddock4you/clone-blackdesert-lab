@@ -1,0 +1,9 @@
+ CREATE TABLE users (
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    name VARCHAR(20) NOT NULL,
+    birth DATE NOT NULL,
+    createdAt DATETIME DEFAULT NOW(),
+    updatedAt DATETIME DEFAULT NOW()
+);
