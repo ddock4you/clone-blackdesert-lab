@@ -4,11 +4,12 @@ const morgan = require("morgan");
 const mysql = require("mysql");
 
 const dbconfig = require("./config/database");
-
+const dotenv = require("dotenv");
 const app = express();
 const page = require("./routes");
 const connection = mysql.createConnection(dbconfig);
 
+dotenv.config();
 connection.connect((err) => {
     if (err) {
         console.error("error connecting: " + err.stack);

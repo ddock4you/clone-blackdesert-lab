@@ -1,6 +1,8 @@
+require("dotenv").config();
+
 module.exports = {
-    host: "localhost",
-    user: "root",
-    password: "tmdgus123!",
-    database: "clone_blackdesert_lab",
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_TABLE,
 };
