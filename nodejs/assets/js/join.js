@@ -1,5 +1,3 @@
-console.log("join");
-
 document.querySelector("[name=join_form]").addEventListener("submit", (e) => {
     e.preventDefault();
     const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -43,9 +41,9 @@ document.querySelector("[name=join_form]").addEventListener("submit", (e) => {
             name: e.target.name.value,
         })
         .then((response) => {
-            console.log(response);
+            alert(response.data.message);
         })
         .catch((error) => {
-            console.log(error);
+            if (error.response.data.message) alert(error.response.data.message);
         });
 });

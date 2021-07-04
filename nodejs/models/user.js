@@ -17,7 +17,7 @@ module.exports = class User extends Sequelize.Model {
             },
             birth: {
                 type: Sequelize.DATE,
-                allowNull: true,
+                allowNull: false,
             }
         }, {
             sequelize,

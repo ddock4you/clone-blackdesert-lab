@@ -1,6 +1,5 @@
 "use strict";
 
-console.log("join");
 document.querySelector("[name=join_form]").addEventListener("submit", function (e) {
   e.preventDefault();
   var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/; // 회원가입 유효성 검사
@@ -41,8 +40,8 @@ document.querySelector("[name=join_form]").addEventListener("submit", function (
     birth: "".concat(e.target.birth_year.value, "-").concat(e.target.birth_month.value, "-").concat(e.target.birth_day.value),
     name: e.target.name.value
   }).then(function (response) {
-    console.log(response);
+    alert(response.data.message);
   })["catch"](function (error) {
-    console.log(error);
+    if (error.response.data.message) alert(error.response.data.message);
   });
 });
