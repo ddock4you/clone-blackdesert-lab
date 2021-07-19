@@ -9,7 +9,10 @@ const jwt = require("jsonwebtoken");
 dotenv.config();
 
 exports.login = (req, res) => {
-    const { email, password } = req.body;
+    const {
+        email,
+        password
+    } = req.body;
     connection.query(
         "SELECT email, password FROM users WHERE email = ?",
         [email],
@@ -33,7 +36,9 @@ exports.login = (req, res) => {
                     return;
                 }
 
-                const token = jwt.sign({ email }, process.env.JWT_SECRET, {
+                const token = jwt.sign({
+                    email
+                }, process.env.JWT_SECRET, {
                     expiresIn: "1h",
                 });
                 res.cookie("user", token);
@@ -46,12 +51,19 @@ exports.login = (req, res) => {
 };
 
 exports.join = (req, res) => {
-    const { email, password, name, birth } = req.body;
+    const {
+        email,
+        password,
+        name,
+        birth
+    } = req.body;
     connection.query(
         "SELECT COUNT(*) AS count FROM users WHERE email = ?",
         [email],
         (err, data) => {
-            const [{ count }] = data; // data[0].count
+            const [{
+                count
+            }] = data; // data[0].count
             if (err) throw err;
             if (count) {
                 res.status(404);

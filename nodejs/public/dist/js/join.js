@@ -4,13 +4,13 @@ document.querySelector("[name=join_form]").addEventListener("submit", function (
   e.preventDefault();
   var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   var _e$target = e.target,
-    email = _e$target.email,
-    password = _e$target.password,
-    password2 = _e$target.password2,
-    name = _e$target.name,
-    birth_year = _e$target.birth_year,
-    birth_month = _e$target.birth_month,
-    birth_day = _e$target.birth_day; // 회원가입 유효성 검사
+      email = _e$target.email,
+      password = _e$target.password,
+      password2 = _e$target.password2,
+      name = _e$target.name,
+      birth_year = _e$target.birth_year,
+      birth_month = _e$target.birth_month,
+      birth_day = _e$target.birth_day; // 회원가입 유효성 검사
 
   if (!email.value) {
     alert("이메일을 입력해주세요.");
