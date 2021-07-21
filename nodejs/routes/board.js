@@ -1,8 +1,9 @@
 const express = require("express");
+const auth = require("../middlewares/auth");
 
 const router = express.Router();
 
-router.get("/list", (req, res) => {
+router.get("/list", auth.isLogin, (req, res) => {
     res.render("board/list");
 });
 

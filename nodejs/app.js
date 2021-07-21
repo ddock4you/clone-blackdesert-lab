@@ -7,6 +7,7 @@ const dbconfig = require("./config/database");
 const dotenv = require("dotenv");
 const app = express();
 const page = require("./routes");
+const cookieParser = require("cookie-parser");
 const connection = mysql.createConnection(dbconfig);
 
 dotenv.config();
@@ -33,6 +34,7 @@ app.use(
         extended: false,
     })
 );
+app.use(cookieParser());
 
 app.use("/", page);
 

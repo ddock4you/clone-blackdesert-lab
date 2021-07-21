@@ -1,10 +1,10 @@
 const express = require("express");
 const board = require("./board");
 const user = require("./user");
-
+const auth = require("../middlewares/auth");
 const router = express.Router();
 
-router.get("/", (req, res) => {
+router.get("/", auth.isLogin, (req, res) => {
     res.render("main");
 });
 
