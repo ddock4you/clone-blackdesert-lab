@@ -33,20 +33,22 @@ exports.login = (req, res) => {
                     });
                     return;
                 }
-                const token = jwt.sign(
-                    {
-                        email,
-                        name,
-                    },
-                    process.env.JWT_SECRET,
-                    {
-                        expiresIn: "1h",
-                    }
-                );
-                res.cookie("user", token);
-                res.status(200).json({
-                    isLoggedin: true,
-                });
+                try {
+                    const token = jwt.sign(
+                        {
+                            email,
+                            name,
+                        },
+                        process.env.JWT_SECRET,
+                        {
+                            expiresIn: "1h",
+                        }
+                    );
+                    res.cookie("user", token);
+                    res.status(200).json({ isLoggedin: true });
+                } catch (err) {
+                    // console.error(err);
+                }
             });
         }
     );

@@ -29,7 +29,7 @@ document.querySelector("[name=loginForm]").addEventListener("submit", function (
     email: email.value,
     password: password.value
   }).then(function (res) {
-    console.log(res);
+    location.href = "/";
   })["catch"](function (err) {
     alert(err.response.data.msg);
   });

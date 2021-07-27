@@ -28,7 +28,7 @@ document.querySelector("[name=loginForm]").addEventListener("submit", (e) => {
             password: password.value,
         })
         .then((res) => {
-            console.log(res);
+            location.href = "/";
         })
         .catch((err) => {
             alert(err.response.data.msg);

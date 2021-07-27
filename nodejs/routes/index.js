@@ -4,8 +4,9 @@ const user = require("./user");
 const auth = require("../middlewares/auth");
 const router = express.Router();
 
-router.get("/", auth.isLogin, (req, res) => {
-    res.render("main");
+router.get("/", (req, res) => {
+    // console.log(req.user);
+    res.render("main", { user: req.user });
 });
 
 // 게시판
