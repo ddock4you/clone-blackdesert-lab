@@ -9,6 +9,7 @@ const app = express();
 const page = require("./routes");
 const cookieParser = require("cookie-parser");
 const connection = mysql.createConnection(dbconfig);
+const { loginCheck } = require("./middlewares/auth");
 
 dotenv.config();
 connection.connect((err) => {
@@ -37,14 +38,6 @@ app.use(
 app.use(cookieParser());
 
 app.use("/", page);
-
-// app.use((err, req, res, next) => {
-//     res.locals.message = err.message;
-//     res.locals.error = process.env.NODE_ENV !== 'production' ? err : {};
-//     res.status(err.status || 500);
-//     // res.render('error');
-//     res.send('');
-// });
 
 app.listen(app.get("port"), (req, res) => {
     console.log(`Server connected on port ${app.get("port")}`);

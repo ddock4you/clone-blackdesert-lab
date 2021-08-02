@@ -1,18 +1,19 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
-exports.isLogin = (req, res, next) => {
-    try {
-        const token = req.cookies.user;
-        const decode = jwt.verify(token, process.env.JWT_SECRET);
-
-        if (decode) {
-            req.user.email = decode.email;
-            req.user.name = decode.name;
-            next();
-        }
-    } catch (err) {
-        console.log(err);
-        // res.status(401).json({ msg: "유효하지 않은 계정입니다." });
-    }
+exports.loginCheck = (req, res, next) => {
+    res.locals.userName = null;
+    res.locals.userEmail = null;
+    // try {
+    //     const token = req.cookies.user;
+    //     const decode = jwt.verify(token, process.env.JWT_SECRET);
+    //     if (decode) {
+    //         res.locals.userName = decode.name;
+    //         res.locals.userEmail = decode.name;
+    //     }
+    // } catch (err) {
+    //     console.error({ err });
+    // }
+    console.log(res.locals.userName);
+    next();
 };

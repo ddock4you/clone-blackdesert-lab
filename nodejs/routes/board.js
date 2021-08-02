@@ -1,9 +1,7 @@
 const express = require("express");
-const auth = require("../middlewares/auth");
-
 const router = express.Router();
 
-router.get("/list", auth.isLogin, (req, res) => {
+router.get("/list", (req, res) => {
     res.render("board/list");
 });
 
@@ -13,6 +11,10 @@ router.get("/view", (req, res) => {
 
 router.get("/wirte", (req, res) => {
     res.render("board/write");
+});
+
+router.get("/news_write", (req, res) => {
+    res.render("board/news_write");
 });
 
 module.exports = router;
