@@ -1,0 +1,48 @@
+{% extends "../components/layout.html" %}
+
+{% block content %}
+<div class="news-write">
+    뉴스 작성 페이지
+    <form name="news-write">
+        <div>
+            <label>
+                제목 <span>*</span>
+                <input type="text" name="title">
+            </label>
+        </div>
+        <div>
+            <label>
+                설명 <span>*</span>
+                <input type="text" name="subtitle">
+            </label>
+        </div>
+        <div>
+            <label>
+                카테고리 <span>*</span>
+                <select name="category" id="">
+                    <option value="" selected>선택해주세요.</option>
+                    <option value="notice">공지사항</option>
+                    <option value="update">업데이트</option>
+                    <option value="gmnote">GM 노트</option>
+                </select>
+            </label>
+        </div>
+        <div>
+            <label>
+                썸네일 <span>*</span>
+                <input name="thumnail" type="file" accept="image/*">
+            </label>
+        </div>
+        <div>
+            <label>
+                내용
+                <textarea name="content" id="" cols="30" rows="10"></textarea>
+            </label>
+        </div>
+        <button type="submit">뉴스 작성</button>
+    </form>
+</div>
+{% endblock %}
+{% block script %}
+<script src="/dist/js/board/write-news.js"></script>
+{% endblock %}

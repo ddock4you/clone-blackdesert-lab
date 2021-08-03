@@ -13,8 +13,8 @@ router.get("/wirte", (req, res) => {
     res.render("board/write");
 });
 
-router.get("/news_write", (req, res) => {
-    res.render("board/news_write");
+router.get("/news-write", (req, res) => {
+    res.render("board/news-write");
 });
 
 module.exports = router;
