@@ -17,4 +17,12 @@ router.get("/news-write", (req, res) => {
     res.render("board/news-write");
 });
 
+router.post("/news-write", (req, res) => {
+    console.log("여기까지 왔음");
+    console.log(req.body);
+    console.log(req.files);
+
+    res.status(200).json({ msg: "hi" });
+});
+
 module.exports = router;

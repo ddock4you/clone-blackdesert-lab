@@ -1,4 +1,6 @@
-document.querySelector("[name=news-write]").addEventListener("submit", (e) => {
+const form = document.querySelector("[name=news-write]");
+
+form.addEventListener("submit", (e) => {
     e.preventDefault();
     const { title, subtitle, category, thumnail, content } = e.target;
 
@@ -24,11 +26,29 @@ document.querySelector("[name=news-write]").addEventListener("submit", (e) => {
         return;
     }
 
-    console.dir(thumnail);
+    const formData = new FormData(form);
+    // formData.append("title", title.value);
+    // formData.append("subtitle", subtitle.value);
+    // formData.append("category", category.value);
+    // formData.append("content", content.value);
+    // formData.append("thumnail", thumnail.files[0]);
 
-    axios.post("/board/news-write", {
-        title: title.value,
-        subtitle: subtitle.value,
-        thumnail: thumnail.value,
-    });
+    for (var pair of formData.entries()) {
+        console.log(pair[1]);
+    }
+
+    axios({
+        method: "post",
+        url: "/board/news-write",
+        data: formData,
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
+    })
+        .then((res) => {
+            console.log(res.msg);
+        })
+        .catch((err) => {
+            console.error(err);
+        });
 });
