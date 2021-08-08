@@ -40,11 +40,7 @@ form.addEventListener("submit", function (e) {
     return;
   }
 
-  var formData = new FormData(form); // formData.append("title", title.value);
-  // formData.append("subtitle", subtitle.value);
-  // formData.append("category", category.value);
-  // formData.append("content", content.value);
-  // formData.append("thumnail", thumnail.files[0]);
+  var formData = new FormData(form);
 
   var _iterator = _createForOfIteratorHelper(formData.entries()),
       _step;
@@ -60,14 +56,7 @@ form.addEventListener("submit", function (e) {
     _iterator.f();
   }
 
-  axios({
-    method: "post",
-    url: "/board/news-write",
-    data: formData,
-    headers: {
-      "Content-Type": "multipart/form-data"
-    }
-  }).then(function (res) {
+  axios.post("/board/news-write", formData).then(function (res) {
     console.log(res.msg);
   })["catch"](function (err) {
     console.error(err);

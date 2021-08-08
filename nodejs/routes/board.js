@@ -1,5 +1,18 @@
 const express = require("express");
+const multer = require("multer");
+const path = require("path");
+const { newsWrite } = require("../controllers/board");
 const router = express.Router();
+const upload = multer({
+    storage: multer.diskStorage({
+        destination: (req, file, cb) => {
+            cb(null, "uploads/");
+        },
+        filename: (req, file, cb) => {
+            cb(null, new Date().valueOf() + path.extname(file.originalname));
+        },
+    }),
+});
 
 router.get("/list", (req, res) => {
     res.render("board/list");
@@ -17,12 +30,6 @@ router.get("/news-write", (req, res) => {
     res.render("board/news-write");
 });
 
-router.post("/news-write", (req, res) => {
-    console.log("여기까지 왔음");
-    console.log(req.body);
-    console.log(req.files);
-
-    res.status(200).json({ msg: "hi" });
-});
+router.post("/news-write", upload.single("thumnail"), newsWrite);
 
 module.exports = router;
