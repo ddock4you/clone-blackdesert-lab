@@ -15,6 +15,8 @@ form.addEventListener("submit", function (e) {
       category = _e$target.category,
       thumnail = _e$target.thumnail,
       content = _e$target.content;
+  var editorData = editor.getData();
+  console.log(editorData);
 
   if (!title.value) {
     alert("제목을 입력해주세요.");
@@ -34,7 +36,7 @@ form.addEventListener("submit", function (e) {
     return;
   }
 
-  if (!content.value) {
+  if (!editorData) {
     alert("내용을 입력해주세요.");
     content.focus();
     return;

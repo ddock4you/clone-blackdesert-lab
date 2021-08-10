@@ -1,11 +1,10 @@
 const mysql = require("mysql");
-const { restart } = require("nodemon");
 const dbconfig = require("../config/database");
 const connection = mysql.createConnection(dbconfig);
 
 exports.newsWrite = (req, res) => {
     const { title, subtitle, category, content } = req.body;
-    const { filename } = req.file;
+    const filename = req.file ? req.file.fliename : null;
 
     try {
         connection.query(
@@ -25,17 +24,18 @@ exports.newsWrite = (req, res) => {
 };
 
 exports.newsList = (req, res) => {
+    let lists = null;
     try {
         connection.query("SELECT * FROM news", (err, data) => {
             if (err) {
                 console.log(err);
-                res.status(401).json({ result: false });
-                return;
+                // res.json({ result: false });
+                // return;
             }
-            res.status(200).json({ result: data });
+            res.render("board/list", { datas: data, aa: "abcd" });
         });
     } catch (err) {
         console.log(err);
-        res.status(404).json({ msg: "error" });
+        // res.status(404).json({ msg: "error" });
     }
 };

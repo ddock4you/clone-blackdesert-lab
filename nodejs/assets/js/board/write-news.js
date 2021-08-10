@@ -3,6 +3,8 @@ const form = document.querySelector("[name=news-write]");
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     const { title, subtitle, category, thumnail, content } = e.target;
+    const editorData = editor.getData();
+    console.log(editorData);
 
     if (!title.value) {
         alert("제목을 입력해주세요.");
@@ -20,7 +22,7 @@ form.addEventListener("submit", (e) => {
         category.focus();
         return;
     }
-    if (!content.value) {
+    if (!editorData) {
         alert("내용을 입력해주세요.");
         content.focus();
         return;
