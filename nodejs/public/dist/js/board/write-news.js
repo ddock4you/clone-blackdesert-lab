@@ -59,7 +59,18 @@ form.addEventListener("submit", function (e) {
   }
 
   axios.post("/board/news-write", formData).then(function (res) {
-    console.log(res.msg);
+    console.log(res);
+
+    var alertCallback = function alertCallback(callback) {
+      alert("작성완료 되었습니다.");
+      callback();
+    };
+
+    if (res.data.newsWrite) {
+      alertCallback(function () {
+        location.href = "/board/list";
+      });
+    }
   })["catch"](function (err) {
     console.error(err);
   });

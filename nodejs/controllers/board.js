@@ -4,7 +4,7 @@ const connection = mysql.createConnection(dbconfig);
 
 exports.newsWrite = (req, res) => {
     const { title, subtitle, category, content } = req.body;
-    const filename = req.file ? req.file.fliename : null;
+    const filename = req.file ? req.file.filename : null;
 
     try {
         connection.query(

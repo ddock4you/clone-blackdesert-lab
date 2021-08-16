@@ -37,7 +37,17 @@ form.addEventListener("submit", (e) => {
     axios
         .post("/board/news-write", formData)
         .then((res) => {
-            console.log(res.msg);
+            console.log(res);
+            const alertCallback = (callback) => {
+                alert("작성완료 되었습니다.");
+                callback();
+            };
+
+            if (res.data.newsWrite) {
+                alertCallback(() => {
+                    location.href = "/board/list";
+                });
+            }
         })
         .catch((err) => {
             console.error(err);

@@ -2,14 +2,13 @@ const express = require("express");
 const nunjucks = require("nunjucks");
 const morgan = require("morgan");
 const mysql = require("mysql");
-
 const dbconfig = require("./config/database");
 const dotenv = require("dotenv");
+const fs = require("fs").promises;
 const app = express();
 const page = require("./routes");
 const cookieParser = require("cookie-parser");
 const connection = mysql.createConnection(dbconfig);
-const { loginCheck } = require("./middlewares/auth");
 
 dotenv.config();
 connection.connect((err) => {
@@ -36,9 +35,17 @@ app.use(
     })
 );
 app.use(cookieParser());
-
 app.use("/", page);
 
 app.listen(app.get("port"), (req, res) => {
     console.log(`Server connected on port ${app.get("port")}`);
 });
+
+fs.access("./uploads")
+    .then(() => {})
+    .catch((err) => {
+        if (err.code === "ENOENT") {
+            return fs.mkdir("./uploads");
+        }
+        return Promise.reject(err);
+    });
