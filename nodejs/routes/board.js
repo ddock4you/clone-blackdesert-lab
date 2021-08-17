@@ -1,7 +1,7 @@
 const express = require("express");
 const multer = require("multer");
 const path = require("path");
-const { newsList, newsWrite, newsList } = require("../controllers/board");
+const { newsList, newsWrite } = require("../controllers/board");
 const router = express.Router();
 const upload = multer({
     storage: multer.diskStorage({
@@ -20,6 +20,10 @@ router.get("/view", (req, res) => {
 
 router.get("/wirte", (req, res) => {
     res.render("board/write");
+});
+
+router.get("/list", (req, res) => {
+    res.render("board/list");
 });
 
 router.get("/get-newslist", newsList);

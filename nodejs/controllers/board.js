@@ -24,16 +24,24 @@ exports.newsWrite = (req, res) => {
 };
 
 exports.newsList = (req, res) => {
-    let lists = null;
     try {
-        connection.query("SELECT * FROM news", (err, data) => {
-            if (err) {
-                console.log(err);
-                // res.json({ result: false });
-                // return;
+        let data = {};
+        connection.query(
+            "SELECT COUNT(*) as count FROM news",
+            (err, countData) => {
+                if (err) {
+                    console.log(err);
+                }
+                data.count = countData[0].count;
+                connection.query("SELECT * FROM news", (err, list) => {
+                    if (err) {
+                        console.log(err);
+                    }
+                    data.list = list;
+                    res.status(200).json({ data });
+                });
             }
-            res.render("board/list", { datas: data, aa: "abcd" });
-        });
+        );
     } catch (err) {
         console.log(err);
         // res.status(404).json({ msg: "error" });
