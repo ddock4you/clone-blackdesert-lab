@@ -26,22 +26,34 @@ exports.newsWrite = (req, res) => {
 exports.newsList = (req, res) => {
     try {
         let data = {};
-        connection.query(
-            "SELECT COUNT(*) as count FROM news",
-            (err, countData) => {
+        connection.query("SELECT COUNT(*) as total FROM news", (err, total) => {
+            if (err) {
+                console.log(err);
+            }
+            data.total = total[0].total;
+            connection.query("SELECT * FROM news", (err, list) => {
                 if (err) {
                     console.log(err);
                 }
-                data.count = countData[0].count;
-                connection.query("SELECT * FROM news", (err, list) => {
-                    if (err) {
-                        console.log(err);
-                    }
-                    data.list = list;
-                    res.status(200).json({ data });
-                });
+                data.list = list;
+                res.status(200).json({ data });
+            });
+        });
+    } catch (err) {
+        console.log(err);
+        // res.status(404).json({ msg: "error" });
+    }
+};
+
+exports.getNewsListTotal = (req, res) => {
+    try {
+        connection.query("SELECT COUNT(*) as total FROM news", (err, data) => {
+            if (err) {
+                console.log(err);
             }
-        );
+            const [{ total }] = data;
+            res.status(200).json({ total });
+        });
     } catch (err) {
         console.log(err);
         // res.status(404).json({ msg: "error" });

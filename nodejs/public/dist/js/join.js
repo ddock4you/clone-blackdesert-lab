@@ -1,16 +1,17 @@
 "use strict";
 
-document.querySelector("[name=join_form]").addEventListener("submit", function (e) {
+document.querySelector("[name=join_form]").addEventListener("submit", e => {
   e.preventDefault();
-  var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-  var _e$target = e.target,
-      email = _e$target.email,
-      password = _e$target.password,
-      password2 = _e$target.password2,
-      name = _e$target.name,
-      birth_year = _e$target.birth_year,
-      birth_month = _e$target.birth_month,
-      birth_day = _e$target.birth_day; // 회원가입 유효성 검사
+  const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  const {
+    email,
+    password,
+    password2,
+    name,
+    birth_year,
+    birth_month,
+    birth_day
+  } = e.target; // 회원가입 유효성 검사
 
   if (!email.value) {
     alert("이메일을 입력해주세요.");
@@ -51,12 +52,12 @@ document.querySelector("[name=join_form]").addEventListener("submit", function (
   axios.post("/user/join", {
     email: email.value,
     password: password.value,
-    birth: "".concat(birth_year.value, "-").concat(birth_month.value, "-").concat(birth_day.value),
+    birth: `${birth_year.value}-${birth_month.value}-${birth_day.value}`,
     name: name.value
-  }).then(function (res) {
+  }).then(res => {
     alert("회원가입이 완료되었습니다.");
     location.href = "/";
-  })["catch"](function (err) {
+  }).catch(err => {
     console.log(err);
   });
 });

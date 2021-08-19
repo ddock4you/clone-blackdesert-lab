@@ -1,11 +1,12 @@
 "use strict";
 
-document.querySelector("[name=loginForm]").addEventListener("submit", function (e) {
+document.querySelector("[name=loginForm]").addEventListener("submit", e => {
   e.preventDefault();
-  var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-  var _e$target = e.target,
-      email = _e$target.email,
-      password = _e$target.password;
+  const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  const {
+    email,
+    password
+  } = e.target;
 
   if (!email.value) {
     alert("이메일을 입력해주세요.");
@@ -28,9 +29,9 @@ document.querySelector("[name=loginForm]").addEventListener("submit", function (
   axios.post("/user/login", {
     email: email.value,
     password: password.value
-  }).then(function (res) {
+  }).then(res => {
     location.href = "/";
-  })["catch"](function (err) {
+  }).catch(err => {
     alert(err.response.data.msg);
   });
 });
