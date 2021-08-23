@@ -1,17 +1,22 @@
 "use strict";
 
-document.querySelector("[name=join_form]").addEventListener("submit", e => {
+var _interopRequireDefault = require("@babel/runtime-corejs3/helpers/interopRequireDefault");
+
+var _concat = _interopRequireDefault(require("@babel/runtime-corejs3/core-js-stable/instance/concat"));
+
+document.querySelector("[name=join_form]").addEventListener("submit", function (e) {
+  var _context, _context2;
+
   e.preventDefault();
-  const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-  const {
-    email,
-    password,
-    password2,
-    name,
-    birth_year,
-    birth_month,
-    birth_day
-  } = e.target; // 회원가입 유효성 검사
+  var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  var _e$target = e.target,
+      email = _e$target.email,
+      password = _e$target.password,
+      password2 = _e$target.password2,
+      name = _e$target.name,
+      birth_year = _e$target.birth_year,
+      birth_month = _e$target.birth_month,
+      birth_day = _e$target.birth_day; // 회원가입 유효성 검사
 
   if (!email.value) {
     alert("이메일을 입력해주세요.");
@@ -52,12 +57,12 @@ document.querySelector("[name=join_form]").addEventListener("submit", e => {
   axios.post("/user/join", {
     email: email.value,
     password: password.value,
-    birth: `${birth_year.value}-${birth_month.value}-${birth_day.value}`,
+    birth: (0, _concat.default)(_context = (0, _concat.default)(_context2 = "".concat(birth_year.value, "-")).call(_context2, birth_month.value, "-")).call(_context, birth_day.value),
     name: name.value
-  }).then(res => {
+  }).then(function (res) {
     alert("회원가입이 완료되었습니다.");
     location.href = "/";
-  }).catch(err => {
+  }).catch(function (err) {
     console.log(err);
   });
 });
